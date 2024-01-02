@@ -1,0 +1,29 @@
+@import '../../assets/scss/variables';
+
+//.body {
+//  width: $bodyWidth;
+//  margin: 0 auto;
+//}
+
+// toast?
+.title {
+  font-weight: 400;
+  text-align: center;
+  margin: 6px auto;
+}
+
+.subTitle {
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: $lightBlack;
+}
+
+.green {
+  color: $green !important;
+  font-weight: bold;
+}
+
+.red {
+  color: $redText !important;
+  font-weight: bold;
+}

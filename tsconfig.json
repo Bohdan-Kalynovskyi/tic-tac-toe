@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "pretty": true,
+        "sourceMap": true,
+        "target": "esnext",
+        "lib": ["esnext"],
+        "moduleResolution": "node",
+        "strict": true,
+        "alwaysStrict": true,
+        "skipLibCheck": true,
+        "importHelpers": true,
+        "strictNullChecks": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true,
+        "baseUrl": "./server",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "outDir": "serverbuild"
+    },
+    "exclude": [
+        "node_modules",
+        "client"
+    ]
+}

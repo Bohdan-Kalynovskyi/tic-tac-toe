@@ -1,0 +1,9 @@
+.currentPlayer {
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 30px;
+  padding: 20px 30px;
+
+  & > span, & > div {
+    font-size: 70px;
+  }
+}

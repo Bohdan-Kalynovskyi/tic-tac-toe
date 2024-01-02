@@ -1,0 +1,38 @@
+# Config
+server/config/config.ts
+server/init/config.js
+
+# Dependencies
+node_modules
+
+# Build
+build
+dist
+
+# Upload
+upload
+
+# IDE
+.idea
+
+# OS metadata
+.DS_Store
+
+# Logs
+nohup.out
+
+########
+# CLIENT
+########
+
+# Config
+client/src/config/config.ts
+
+#build
+client/build/
+
+# IDE
+client/.idea/
+
+# Dependencies
+client/node_modules/

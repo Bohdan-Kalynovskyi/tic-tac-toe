@@ -1,0 +1,39 @@
+@import "./variables";
+
+.toast-notification {
+  padding: 0;
+  width: auto;
+  max-width: $formWidth;
+
+  .Toastify__toast {
+    padding: 15px 45px;
+    letter-spacing: 1px;
+    font-size: 180%;
+
+    &.Toastify__toast--success {
+      border: 1px solid $lightGreen;
+      background: $lightGreen;
+
+      .Toastify__toast-body {
+        font-size: 200%;
+        color: white;
+      }
+    }
+
+    &.Toastify__toast--error {
+      border: 1px solid $red;
+      background: white;
+
+      .Toastify__toast-body {
+        color: $red;
+      }
+    }
+
+    .Toastify__toast-body {
+      font-size: 130%;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-align: center;
+    }
+  }
+}

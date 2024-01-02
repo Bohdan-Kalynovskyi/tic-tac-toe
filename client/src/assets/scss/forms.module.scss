@@ -1,0 +1,238 @@
+@import "./variables";
+
+form.form, div.form {
+  width: $formWidth;
+  margin: 0 auto;
+
+  .btnSubmit {
+    display: block;
+    width: 530px;
+    margin: 23px auto;
+  }
+
+  input {
+    width: 420px !important;
+  }
+}
+
+.formItem {
+  display: block;
+  margin-bottom: 8px !important;
+}
+
+$labelWidth: 185px;
+
+.formLabel {
+  padding-bottom: 8px;
+  font-size: 22px;
+  width: $labelWidth;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.labelRadio {
+  margin-bottom: 6px;
+}
+
+.numberInput {
+  width: 210px !important;
+  padding: 6px !important;
+
+  input {
+    font-size: 24px !important;
+  }
+}
+
+.autocompleteInput {
+  width: 340px !important;
+
+  input {
+    height: 42px !important;
+  }
+}
+
+.daysCount {
+  margin-top: 14px;
+  margin-bottom: 21px;
+  padding: 6px 12px;
+  font-size: 15px;
+  background: #fafafa;
+}
+
+.errorMessage {
+  padding: 2px 6px 6px $labelWidth;
+  display: block;
+  flex-grow: 1;
+  color: $red;
+  font-size: 14px;
+}
+
+.centerMsg {
+  width: $bodyWidth;
+  font-size: 32px;
+  color: #777;
+  margin: 120px auto;
+  text-align: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    font-size: 69px;
+    margin-bottom: 50px;
+    margin-left: -29px;
+    color: #e5e5e5;
+    letter-spacing: 1.3px;
+  }
+
+  button {
+    width: 345px;
+    margin: 24px;
+  }
+
+  b {
+    font-size: 40px;
+    margin: 0 8px;
+    color: #555;
+  }
+}
+
+button.btnSubmit, button.btnPrimary, button.btnSecondary {
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0;
+  height: 4rem !important;
+
+  &:focus {
+    box-shadow: 0 0 3px 1px #3089ff;
+  }
+}
+
+button.btnPrimary, button.btnSubmit {
+  margin: 20px 0;
+  height: 38px;
+  font-size: 26px;
+  background: #888;
+  color: $white;
+  border: none;
+}
+
+button.btnPrimary, button.btnSecondary {
+  margin: 12px 0;
+}
+
+button.btnPrimary {
+  margin-right: 30px;
+  width: 100%;
+
+  &.btnValid {
+    background: #4a4a4a;
+  }
+
+  &[disabled] {
+    background: $gray !important;
+    color: #333 !important;
+  }
+}
+
+button.btnSecondary {
+  padding: 1px 44px;
+  border: 1px solid $gray !important;
+  background: $white;
+  color: #b0b0bb;
+
+  &:hover:not([disabled]) {
+    color: #777;
+  }
+}
+
+.btnSubmit {
+  padding: 8px 36px;
+  background: $black !important;
+  color: $white !important;
+  font-size: 20px;
+  width: 560px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:not([disabled]):hover {
+    background: #333 !important;
+    color: $white !important;
+  }
+
+  &[disabled] {
+    background: $gray !important;
+    color: $black !important;
+    font-size: 20px;
+  }
+}
+
+button.downloadBtn {
+  display: inline-block;
+  margin-left: 30px;
+  height: 22px !important;
+  background: #fafafa;
+  color: #555;
+
+  &[disabled] {
+    cursor: default !important;
+  }
+}
+
+
+.currency {
+  padding-left: 0.32em;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.total {
+  margin-top: 16px;
+  border: 1px dotted #eee;
+  background: repeating-linear-gradient(
+                  -42deg,
+                  #fafafa,
+                  #fafafa 10px,
+                  #fff 10px,
+                  #fff 20px
+  ) #fafafa;
+  padding: 0 24px 0 0;
+  font-size: 26px;
+  text-align: center;
+  color: #bbb;
+
+  .totalVal {
+    padding-left: 10px;
+    padding-right: 3px;
+    position: relative;
+    top: 4px;
+    font-size: 51px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .currency {
+    font-size: 24px;
+    color: #dfdfdf;
+  }
+}
+
+.datesList {
+  margin-left: 10px;
+  margin-bottom: -8px;
+  font-size: 22px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  max-height: 12em;
+
+  li {
+    width: 3.9em;
+    padding-left: 1em;
+    color: #555;
+  }
+}

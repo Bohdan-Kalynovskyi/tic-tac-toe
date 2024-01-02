@@ -1,0 +1,37 @@
+@import '../../assets/scss/variables';
+
+.grid {
+  margin: 8px;
+}
+
+@media (max-width: $mobileWidth) {
+  .grid {
+    margin: 2px;
+  }
+}
+
+table, th, td {
+  border: 3px solid #00e;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #ffd4e9;
+}
+
+td {
+  font-family: Courier New, Courier, Monospace, monospace;
+  font-weight: bold;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+}
+
+.win {
+  background: #f55;
+  color: #fafafa;
+}
+
+.blocked {
+  cursor: not-allowed;
+  pointer-events: none;
+}

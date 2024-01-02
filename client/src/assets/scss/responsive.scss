@@ -1,0 +1,40 @@
+@import "variables";
+
+@mixin tablet {
+  @media (max-width: $mobileWidth) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $formWidth) {
+    @content;
+  }
+}
+
+
+.grid {
+  position: relative;
+  width: $mobileWidth - 135px;
+  height: calc(100vh - 140px);
+  left: -55px;
+}
+
+.fixgrid {
+  height: calc(100vh - 240px);
+}
+
+@media (max-width: $mobileWidth - 80px) {
+  .grid {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 127px;
+    bottom: 0;
+  }
+  .fixgrid {
+    top: 224px;
+  }
+}
+
+// todo move to aggrid scss

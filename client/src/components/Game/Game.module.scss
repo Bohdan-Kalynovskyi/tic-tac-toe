@@ -1,0 +1,14 @@
+@import '../../assets/scss/variables';
+
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  user-select: none;
+}
+
+@media (max-width: $mobileWidth) {
+  .game {
+    display: block;
+  }
+}

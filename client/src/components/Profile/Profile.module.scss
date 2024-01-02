@@ -1,0 +1,33 @@
+@import '../../assets/scss/variables';
+
+.profile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  background: rgba(200, 200, 200, 0.6);
+  border: 1px dashed rgba(255, 255, 255, .8);
+  padding: 10px;
+  width: 104px;
+
+  & > span, & > div {
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 44px;
+    margin: 22px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .profile {
+    top: initial;
+    bottom: 0;
+    background: #eee;
+  }
+}
+
+.active {
+  background: #afa;
+  outline: 2px dashed yellow;
+}

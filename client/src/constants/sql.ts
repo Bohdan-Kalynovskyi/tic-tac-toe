@@ -1,0 +1,1 @@
+export const MAX_INT_MYSQL = 4294967295;
