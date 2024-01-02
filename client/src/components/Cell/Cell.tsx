@@ -18,6 +18,10 @@ export const Cell: FC<IProps> = ({ player, onClick }: IProps) => {
       return <span>🐱</span>;
     case IPlayer.Dog:
       return <span>🐶</span>;
+    case IPlayer.Flower:
+      return <span>🌸</span>;
+    case IPlayer.Whale:
+      return <span>🐳</span>;
     default:
       return (
         <div

@@ -9,7 +9,7 @@ import { WebSocket, WebSocketServer } from 'ws';
 
 import { PORT } from './config/config';
 import { registerEndpoints } from './registerEndpoints';
-import { allPlayers, chosenPlayers, currentPlayerRef, setNextPlayer, sizeRef } from './endpoints/data';
+import { allPlayers, chosenPlayers, currentPlayerRef, setNextPlayer, winSizeRef } from './endpoints/data';
 import chalk from 'chalk';
 import { IPlayer } from '../client/src/types/data.type';
 
@@ -50,7 +50,7 @@ ws.on('connection', _ws => {
           data: { currentPlayer: currentPlayerRef.current, chosenPlayers },
         })
       );
-      _ws.send(JSON.stringify({ action: 'resize', data: sizeRef.current }));
+      _ws.send(JSON.stringify({ action: 'resize', data: winSizeRef.current }));
     }, // time to re-render App and Game
     250
   );
@@ -88,17 +88,12 @@ ws.on('connection', _ws => {
         case 'resize':
           {
             const diff = parseInt(data as string);
-            const planned = sizeRef.current + diff;
-            if (
-              (diff !== -1 && diff !== 1) ||
-              planned < 2 ||
-              planned > allPlayers.length ||
-              planned < chosenPlayers.length
-            ) {
+            const planned = winSizeRef.current + diff;
+            if ((diff !== -1 && diff !== 1) || planned < 3 || planned > 5) {
               throw new Error('wrong diff');
             }
-            sizeRef.current = planned;
-            broadcast(JSON.stringify({ action: 'resize', data: sizeRef.current }));
+            winSizeRef.current = planned;
+            broadcast(JSON.stringify({ action: 'resize', data: winSizeRef.current }));
           }
           break;
 

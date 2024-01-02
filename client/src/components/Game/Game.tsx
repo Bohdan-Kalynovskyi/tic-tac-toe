@@ -12,14 +12,13 @@ import { toast } from 'react-toastify';
 
 type IProps = {
   size: number;
-  winSize: number;
   players: IPlayer[];
   ws: WebSocket;
 };
 
-export const Game: React.FC<IProps> = ({ players, size, winSize, ws }: IProps) => {
+export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
   const [grid, setGrid] = useState<IGrid>(getEmptyGrid(size));
-  const [playersCount, setPlayersCount] = useState<number>(3);
+  const [winSize, setWinSize] = useState<number | null>(null);
   const [chosenPlayers, setChosenPlayers] = useState<IPlayer[]>([]);
   const [chosenPlayer, setChosenPlayer] = useState<IPlayer | null>(null);
   const [currentPlayer, setCurrentPlayer] = useState<IPlayer | null>(null);
@@ -41,7 +40,7 @@ export const Game: React.FC<IProps> = ({ players, size, winSize, ws }: IProps) =
 
       switch (action) {
         case 'resize':
-          setPlayersCount(parseInt(data));
+          setWinSize(parseInt(data));
           break;
 
         case 'chosen':
@@ -57,7 +56,7 @@ export const Game: React.FC<IProps> = ({ players, size, winSize, ws }: IProps) =
           grid[y][x] = playerJustPlayed;
           setGrid(grid);
 
-          const victory = getVictory(grid, currentPlayer!, size, winSize);
+          const victory = getVictory(grid, currentPlayer!, size, winSize!);
           if (victory) {
             setWinLine(victory);
           } else {
@@ -106,7 +105,7 @@ export const Game: React.FC<IProps> = ({ players, size, winSize, ws }: IProps) =
     <div className={style.game}>
       {chosenPlayer === null ? (
         <ChoosePlayer
-          count={playersCount}
+          winSize={winSize}
           players={players}
           chosenPlayersIndexes={chosenPlayers}
           onChoose={onChoosePlayer}
@@ -125,7 +124,7 @@ export const Game: React.FC<IProps> = ({ players, size, winSize, ws }: IProps) =
             {winLine ? (
               <PlayerWon player={currentPlayer} />
             ) : (
-              <CurrentPlayer isActive={yourTurn} player={currentPlayer} />
+              <CurrentPlayer isActive={yourTurn} winSize={winSize!} player={currentPlayer} />
             )}
           </>
         )

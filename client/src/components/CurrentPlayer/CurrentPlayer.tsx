@@ -8,10 +8,11 @@ import { Cell } from '../Cell/Cell';
 
 type IProps = {
   isActive: boolean;
+  winSize: number;
   player: IPlayer;
 };
 
-export const CurrentPlayer: FC<IProps> = ({ isActive, player }: IProps) => {
+export const CurrentPlayer: FC<IProps> = ({ isActive, winSize, player }: IProps) => {
   const className = c(style.currentPlayer, { [style.active]: isActive });
   return (
     <div className={className}>
@@ -20,6 +21,11 @@ export const CurrentPlayer: FC<IProps> = ({ isActive, player }: IProps) => {
       <br />
       <br />
       <Cell player={player} />
+      <br />
+      <br />
+      <small>
+        win length <big>{winSize}</big>
+      </small>
     </div>
   );
 };

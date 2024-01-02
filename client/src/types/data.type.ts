@@ -8,7 +8,7 @@ export enum IPlayer {
   Cat,
   Dog,
   Flower,
-  Star,
+  Whale,
 }
 
 export const NO_PLAYER = -1;

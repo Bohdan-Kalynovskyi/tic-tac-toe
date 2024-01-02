@@ -5,7 +5,7 @@ import { IPlayer, PlayerSymbols } from '../../types/data.type';
 import { Button, Radio, RadioChangeEvent } from 'antd';
 
 type IProps = {
-  count: number;
+  winSize: number | null;
   players: IPlayer[];
   chosenPlayersIndexes: number[];
   onChoose: (x: IPlayer) => void;
@@ -13,7 +13,7 @@ type IProps = {
 };
 
 export const ChoosePlayer: React.FC<IProps> = ({
-  count,
+  winSize,
   players,
   chosenPlayersIndexes,
   onChoose,
@@ -44,17 +44,21 @@ export const ChoosePlayer: React.FC<IProps> = ({
       <Button
         className={style.less}
         onClick={() => onChangeSize(-1)}
-        disabled={count <= 2 || count <= chosenPlayersIndexes.length}
+        disabled={winSize === null || winSize <= 3 || winSize <= chosenPlayersIndexes.length}
       >
         -
       </Button>
-      <Button className={style.more} onClick={() => onChangeSize(1)} disabled={count >= players.length}>
+      <Button
+        className={style.more}
+        onClick={() => onChangeSize(1)}
+        disabled={winSize === null || winSize >= 5}
+      >
         +
       </Button>
       <div className={style.explain}>
         ← less
         <b className={style.playersCount}>
-          <big>{count}</big> players
+          win length <big>{winSize}</big>
         </b>
         more →
       </div>

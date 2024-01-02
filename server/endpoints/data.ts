@@ -6,12 +6,12 @@ export const allPlayers = [
   IPlayer.Dog,
   IPlayer.Cat,
   IPlayer.Flower,
-  IPlayer.Star,
+  IPlayer.Whale,
 ];
 
 export const chosenPlayers: IPlayer[] = [];
 
-export const sizeRef = { current: 2 };
+export const winSizeRef = { current: 3 };
 
 export const currentPlayerRef: { current: IPlayer | null } = { current: null };
 

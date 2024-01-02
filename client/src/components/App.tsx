@@ -43,9 +43,7 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <div className={style.app}>
-        {players && ws && <Game players={players} size={9} winSize={4} ws={ws} />}
-      </div>
+      <div className={style.app}>{players && ws && <Game players={players} size={9} ws={ws} />}</div>
       <ToastContainer {...TOAST_CONFIG} />
     </>
   );
