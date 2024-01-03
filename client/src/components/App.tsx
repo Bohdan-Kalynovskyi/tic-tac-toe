@@ -15,8 +15,7 @@ export const App: React.FC = () => {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   const connectSocket = () => {
-    const l = window.location;
-    const ws = new WebSocket(`ws://${l.hostname}:8001`);
+    const ws = new WebSocket(`ws://${window.location.hostname}:8001`);
 
     ws.onerror = err => toast.error(err.type); // consider reconnect
 

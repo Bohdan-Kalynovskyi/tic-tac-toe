@@ -1,5 +1,5 @@
 # Config
-server/config/config.ts
+#server/config/config.ts
 server/init/config.js
 
 # Dependencies

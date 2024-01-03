@@ -44,7 +44,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
       <Button
         className={style.less}
         onClick={() => onChangeSize(-1)}
-        disabled={winSize === null || winSize <= 3 || winSize <= chosenPlayersIndexes.length}
+        disabled={winSize === null || winSize <= 3}
       >
         -
       </Button>
@@ -58,7 +58,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
       <div className={style.explain}>
         ← less
         <b className={style.playersCount}>
-          Win length: <big>{winSize}</big>
+          Win length: <big style={{ display: 'inline-block', paddingLeft: 1 }}>{winSize}</big>
         </b>
         more →
       </div>
