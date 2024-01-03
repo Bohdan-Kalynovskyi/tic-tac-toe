@@ -26,10 +26,10 @@ nohup.out
 ########
 
 # Config
-client/src/config/config.ts
+#client/src/config/config.ts
 
 #build
-client/build/
+#client/build/
 
 # IDE
 client/.idea/

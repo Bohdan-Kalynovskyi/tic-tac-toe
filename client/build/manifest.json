@@ -1,0 +1,5 @@
+{
+  "short_name": "Webapp",
+  "start_url": ".",
+  "display": "standalone"
+}
