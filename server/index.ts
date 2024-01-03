@@ -52,7 +52,7 @@ ws.on('connection', _ws => {
       );
       _ws.send(JSON.stringify({ action: 'resize', data: winSizeRef.current }));
     }, // time to re-render App and Game
-    250
+    350
   );
 
   _ws.on('error', e => console.error(e));
@@ -102,7 +102,8 @@ ws.on('connection', _ws => {
             const currPlayer = currentPlayerRef.current;
             const { x, y, player }: { x: number; y: number; player: number } = data;
             if (player !== currPlayer || player !== thisPlayer) {
-              throw new Error('wrong player');
+              break;
+              // throw new Error('wrong player');
             }
             setNextPlayer();
             broadcast(

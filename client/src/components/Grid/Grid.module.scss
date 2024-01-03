@@ -1,15 +1,3 @@
-@import '../../assets/scss/variables';
-
-.grid {
-  margin: 8px;
-}
-
-@media (max-width: $mobileWidth) {
-  .grid {
-    margin: 2px;
-  }
-}
-
 table, th, td {
   border: 3px solid #00e;
   border-collapse: collapse;

@@ -56,7 +56,7 @@ export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
           grid[y][x] = playerJustPlayed;
           setGrid(grid);
 
-          const victory = getVictory(grid, currentPlayer!, size, winSize!);
+          const victory = getVictory(grid, playerJustPlayed, size, winSize!);
           if (victory) {
             setWinLine(victory);
           } else {

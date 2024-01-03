@@ -5,10 +5,12 @@
   flex-direction: row;
   justify-content: space-evenly;
   user-select: none;
+  margin: 12px;
 }
 
 @media (max-width: $mobileWidth) {
   .game {
     display: block;
+    margin: 2px;
   }
 }
