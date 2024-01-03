@@ -24,7 +24,7 @@ export const CurrentPlayer: FC<IProps> = ({ isActive, winSize, player }: IProps)
       <br />
       <br />
       <br />
-      <small style={{ color: '#777' }}>
+      <small style={{ color: '#777', textShadow: '0 0 1px rgba(255,255,255,.7)' }}>
         Win length: <big>{winSize}</big>
       </small>
     </div>

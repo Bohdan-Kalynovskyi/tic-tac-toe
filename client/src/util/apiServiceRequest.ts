@@ -4,7 +4,10 @@ import { toast } from 'react-toastify';
 import { API_BASE } from '../config/config';
 import { OFFLINE_ERROR_CODE } from '../constants/http';
 import { LOCAL_STORAGE_TOKEN_KEY } from '../constants/localStorage';
-import { IStringMap, IStringNumberMap } from './types';
+
+export type IStringNumberMap = { [key: string]: string | number };
+export type IStringMap = { [key: string]: string };
+export type INumberMap = { [key: string]: number };
 
 const getParamsString = (params: IStringNumberMap) => {
   const encodedParams = stringify(params, { encodeValuesOnly: true, skipNulls: true });
