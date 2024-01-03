@@ -58,7 +58,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
       <div className={style.explain}>
         ← less
         <b className={style.playersCount}>
-          win length <big>{winSize}</big>
+          Win length: <big>{winSize}</big>
         </b>
         more →
       </div>

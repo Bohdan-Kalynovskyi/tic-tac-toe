@@ -4,3 +4,35 @@
   height: 53px;
   padding-top: 11px;
 }
+
+
+.sun {
+  width: 200px;
+  height: 200px;
+  top:50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top:-100px;
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+#sun {
+  /* 	background: #FFE26C; */
+  border-color: #FFE26C;
+  border-style: solid;
+  border-width: 75px;
+}
+#sun2 {
+  border: 75px solid #fff;
+}
+.sun_afterimage {
+  width: 60px;
+  height:2px;
+  background: #FFE26C;
+  top:50%;
+  left: 50%;
+  position: absolute;
+  transform-origin: 0% 1px;
+  transform:translate(120px, 0px);
+}

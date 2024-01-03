@@ -18,7 +18,7 @@ export const Profile: FC<IProps> = ({ isActive, chosenPlayer, onReset }: IProps)
     <div className={className}>
       You:
       <Cell player={chosenPlayer} />
-      <Button type="primary" style={{ marginLeft: 7 }} onClick={onReset}>
+      <Button type="primary" style={{ marginLeft: 6 }} onClick={onReset}>
         Reset
       </Button>
     </div>
