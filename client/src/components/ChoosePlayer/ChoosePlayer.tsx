@@ -20,6 +20,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
   onChangeSize,
 }: IProps) => {
   const onChange = ({ target }: RadioChangeEvent) => onChoose(target.value);
+  const fontSize = window.innerWidth > 330 ? 35 : 32;
 
   return (
     <div className={style.modal}>
@@ -27,7 +28,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
       <Radio.Group
         buttonStyle="solid"
         optionType="button"
-        style={{ marginTop: 170, transform: 'rotate(90deg)' }}
+        style={{ marginTop: 172, transform: 'rotate(90deg)' }}
         onChange={onChange}
       >
         {players.map(player => (
@@ -37,7 +38,7 @@ export const ChoosePlayer: React.FC<IProps> = ({
             key={player}
             value={player}
           >
-            <div style={{ fontSize: 35, transform: 'rotate(-90deg)' }}>{PlayerSymbols[player]}</div>
+            <div style={{ fontSize, transform: 'rotate(-90deg)' }}>{PlayerSymbols[player]}</div>
           </Radio>
         ))}
       </Radio.Group>

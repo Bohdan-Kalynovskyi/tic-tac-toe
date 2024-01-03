@@ -23,8 +23,7 @@ export const CurrentPlayer: FC<IProps> = ({ isActive, winSize, player }: IProps)
       <Cell player={player} />
       <br />
       <br />
-      <br />
-      <small style={{ color: '#777', textShadow: '0 0 1px rgba(255,255,255,.7)' }}>
+      <small style={{ color: '#888', textShadow: '0 0 1px white' }}>
         Win length: <big>{winSize}</big>
       </small>
     </div>

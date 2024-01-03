@@ -116,7 +116,8 @@ export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
           <>
             <Profile isActive={yourTurn} chosenPlayer={chosenPlayer} onReset={onReset} />
             <Grid
-              isActive={yourTurn && chosenPlayers.length > 1}
+              yourTurn={yourTurn}
+              playersCount={chosenPlayers.length}
               grid={grid}
               winLine={winLine}
               onClick={onGridClick}

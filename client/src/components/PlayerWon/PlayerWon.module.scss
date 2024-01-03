@@ -1,10 +1,25 @@
+@import '../../assets/scss/variables';
+
 .won {
   position: relative;
   background: rgba(255, 255, 255, 0.5);
   font-size: 30px;
   padding: 20px 30px;
+  left: -45px;
+  width: 232px;
+  margin: 0;
+  text-align: center;
 
   & > span, & > div {
-    font-size: 70px;
+    display: block;
+    font-size: 80px;
+  }
+}
+
+@media (max-width: $mobileWidth) {
+  .won {
+    position: static;
+    width: 384px;
+    margin: 0 auto;
   }
 }

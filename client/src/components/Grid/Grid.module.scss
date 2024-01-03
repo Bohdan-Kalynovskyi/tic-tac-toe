@@ -1,3 +1,24 @@
+@import '../../assets/scss/variables';
+
+.wrapper {
+  position: relative;
+}
+
+@media (max-width: $mobileWidth) {
+  .wrapper {
+    width: 384px;
+    margin: 0 auto;
+  }
+}
+
+.hourGlass {
+  position: absolute;
+  background: url("../../assets/hourGlass.gif");
+  background-size: contain;
+  opacity: .4;
+}
+
+
 table, th, td {
   border: 3px solid #00e;
   border-collapse: collapse;

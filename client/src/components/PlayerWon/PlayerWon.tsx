@@ -53,7 +53,7 @@ export const PlayerWon: FC<IProps> = ({ player }: IProps) => {
       <Cell player={player} />
       <br />
       <br />
-      Won!
+      <big>Won!</big>
       <div className="scene1">
         <div id="sun" className="sun"></div>
         <div id="sun2" className="sun"></div>
