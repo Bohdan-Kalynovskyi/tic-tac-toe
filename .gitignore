@@ -7,7 +7,6 @@ node_modules
 
 # Build
 build
-dist
 
 # Upload
 upload
@@ -28,8 +27,8 @@ nohup.out
 # Config
 #client/src/config/config.ts
 
-#build
-#client/build/
+# build
+# client/build/
 
 # IDE
 client/.idea/
