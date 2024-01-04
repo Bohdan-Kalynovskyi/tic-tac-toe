@@ -1,6 +1,7 @@
 import style from './Game.module.scss';
 
 import React, { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { IGrid, IPlayer, WinLine } from '../../types/data.type';
 import { getEmptyGrid, getVictory } from './util';
 import { Grid } from '../Grid/Grid';
@@ -8,15 +9,16 @@ import { CurrentPlayer } from '../CurrentPlayer/CurrentPlayer';
 import { PlayerWon } from '../PlayerWon/PlayerWon';
 import { ChoosePlayer } from '../ChoosePlayer/ChoosePlayer';
 import { Profile } from '../Profile/Profile';
-import { toast } from 'react-toastify';
+import { http } from '../../util/apiServiceRequest';
+import { API_URL } from '../../constants/apiEndpoints';
 
 type IProps = {
   size: number;
-  players: IPlayer[];
   ws: WebSocket;
 };
 
-export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
+export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
+  const [players, setPlayers] = useState<IPlayer[] | null>(null);
   const [grid, setGrid] = useState<IGrid>(getEmptyGrid(size));
   const [winSize, setWinSize] = useState<number | null>(null);
   const [chosenPlayers, setChosenPlayers] = useState<IPlayer[]>([]);
@@ -25,6 +27,21 @@ export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
   const [winLine, setWinLine] = useState<WinLine | null>(null);
 
   const yourTurn = currentPlayer === chosenPlayer;
+
+  useEffect(() => {
+    http
+      .get(API_URL.init)
+      .then(({ chosen, allPlayers, winLength }) => {
+        const { currentPlayer: _currentPlayer, chosenPlayers: _chosenPlayers } = chosen;
+        if (currentPlayer !== _currentPlayer) {
+          setCurrentPlayer(_currentPlayer);
+        }
+        setChosenPlayers(_chosenPlayers);
+        setPlayers(allPlayers);
+        setWinSize(winLength);
+      })
+      .catch(e => toast.error(e));
+  }, []);
 
   const onChoosePlayer = useCallback(
     (player: IPlayer) => {
@@ -81,7 +98,7 @@ export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
           break;
       }
     };
-  }, [chosenPlayer, currentPlayer, grid, size, winSize, ws]);
+  }, [currentPlayer, grid, size, winSize, ws]);
 
   const onChangeSize = useCallback(
     (diff: number) => {
@@ -102,34 +119,36 @@ export const Game: React.FC<IProps> = ({ players, size, ws }: IProps) => {
   }, [ws]);
 
   return (
-    <div className={style.game}>
-      {chosenPlayer === null ? (
-        <ChoosePlayer
-          winSize={winSize}
-          players={players}
-          chosenPlayersIndexes={chosenPlayers}
-          onChoose={onChoosePlayer}
-          onChangeSize={onChangeSize}
-        />
-      ) : (
-        currentPlayer !== null && (
-          <>
-            <Profile isActive={yourTurn} chosenPlayer={chosenPlayer} onReset={onReset} />
-            <Grid
-              yourTurn={yourTurn}
-              playersCount={chosenPlayers.length}
-              grid={grid}
-              winLine={winLine}
-              onClick={onGridClick}
-            />
-            {winLine ? (
-              <PlayerWon player={currentPlayer} />
-            ) : (
-              <CurrentPlayer isActive={yourTurn} winSize={winSize!} player={currentPlayer} />
-            )}
-          </>
-        )
-      )}
-    </div>
+    players && (
+      <div className={style.game}>
+        {chosenPlayer === null ? (
+          <ChoosePlayer
+            winSize={winSize}
+            players={players}
+            chosenPlayersIndexes={chosenPlayers}
+            onChoose={onChoosePlayer}
+            onChangeSize={onChangeSize}
+          />
+        ) : (
+          currentPlayer !== null && (
+            <>
+              <Profile isActive={yourTurn} chosenPlayer={chosenPlayer} onReset={onReset} />
+              <Grid
+                yourTurn={yourTurn}
+                playersCount={chosenPlayers.length}
+                grid={grid}
+                winLine={winLine}
+                onClick={onGridClick}
+              />
+              {winLine ? (
+                <PlayerWon player={currentPlayer} />
+              ) : (
+                <CurrentPlayer isActive={yourTurn} winSize={winSize!} player={currentPlayer} />
+              )}
+            </>
+          )
+        )}
+      </div>
+    )
   );
 };

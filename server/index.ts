@@ -42,19 +42,6 @@ ws.on('connection', _ws => {
 
   let thisPlayer: IPlayer | null = null;
 
-  setTimeout(
-    () => {
-      _ws.send(
-        JSON.stringify({
-          action: 'chosen',
-          data: { currentPlayer: currentPlayerRef.current, chosenPlayers },
-        })
-      );
-      _ws.send(JSON.stringify({ action: 'resize', data: winSizeRef.current }));
-    }, // time to re-render App and Game
-    350
-  );
-
   _ws.on('error', e => console.error(e));
 
   _ws.on('message', message => {

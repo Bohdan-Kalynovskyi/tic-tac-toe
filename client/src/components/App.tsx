@@ -6,12 +6,8 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import { TOAST_CONFIG } from '../constants/toastConfig';
 import { Game } from './Game/Game';
-import { IPlayer } from '../types/data.type';
-import { http } from '../util/apiServiceRequest';
-import { API_URL } from '../constants/apiEndpoints';
 
 export const App: React.FC = () => {
-  const [players, setPlayers] = useState<IPlayer[] | null>(null);
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   const connectSocket = () => {
@@ -31,18 +27,11 @@ export const App: React.FC = () => {
     setWs(ws);
   };
 
-  useEffect(() => {
-    http
-      .get(API_URL.allPlayers)
-      .then(setPlayers)
-      .catch(e => toast.error(e));
-
-    connectSocket();
-  }, []);
+  useEffect(connectSocket, []);
 
   return (
     <>
-      <div className={style.app}>{players && ws && <Game players={players} size={9} ws={ws} />}</div>
+      <div className={style.app}>{ws && <Game size={9} ws={ws} />}</div>
       <ToastContainer {...TOAST_CONFIG} />
     </>
   );
