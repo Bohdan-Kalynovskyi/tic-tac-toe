@@ -41,6 +41,7 @@ export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
         setWinSize(winLength);
       })
       .catch(e => toast.error(e));
+    // eslint-ignore-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChoosePlayer = useCallback(
@@ -81,10 +82,10 @@ export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
           }
           break;
 
-        // eslint-ignore-next-line no-fallthrough
         // @ts-ignore
         case 'server_restart':
           toast.error('server restarted');
+        // eslint-ignore-next-line no-fallthrough
         case 'reset':
           setGrid(getEmptyGrid(size));
           setChosenPlayers([]);
