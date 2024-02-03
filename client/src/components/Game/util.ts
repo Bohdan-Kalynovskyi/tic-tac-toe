@@ -11,12 +11,7 @@ export function getEmptyGrid(size: number): IGrid {
   return rows;
 }
 
-export function getVictory(
-  grid: IGrid,
-  currentPlayer: IPlayer,
-  size: number,
-  winSize: number
-): WinLine | undefined {
+export function getVictory(grid: IGrid, currentPlayer: IPlayer, size: number, winSize: number): WinLine | undefined {
   const margin = size - winSize + 1;
 
   for (let x = 0; x < size; x++) {

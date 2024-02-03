@@ -1,13 +1,6 @@
 import { IPlayer } from '../../client/src/types/data.type';
 
-export const allPlayers = [
-  IPlayer.X,
-  IPlayer.Circle,
-  IPlayer.Dog,
-  IPlayer.Cat,
-  IPlayer.Flower,
-  IPlayer.Whale,
-];
+export const allPlayers = [IPlayer.X, IPlayer.Circle, IPlayer.Dog, IPlayer.Cat, IPlayer.Flower, IPlayer.Whale];
 
 export const chosenPlayers: IPlayer[] = [];
 

@@ -1,5 +1,4 @@
-export const toCamelCase = (s: string) =>
-  s ? s.replace(/([_][a-z])/gi, $1 => $1.toUpperCase().replace('_', '')) : '';
+export const toCamelCase = (s: string) => (s ? s.replace(/([_][a-z])/gi, $1 => $1.toUpperCase().replace('_', '')) : '');
 
 export const insertIfNotAtPos = (pos: number, char: string[1], str: string): string => {
   if (str.length > pos && str[pos] !== char) {

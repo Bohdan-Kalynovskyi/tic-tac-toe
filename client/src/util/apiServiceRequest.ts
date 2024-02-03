@@ -99,7 +99,7 @@ const getRequestConfig = (
   resource: string,
   data?: object,
   requestOptions?: IRequestOptions,
-  urlParams?
+  urlParams?,
 ): IAxiosConfig => ({
   method,
   url: getUrl(resource, urlParams),
@@ -109,8 +109,7 @@ const getRequestConfig = (
 });
 
 const createRequestPromise =
-  (method: IHttpMethod) =>
-  (resource: string, data?: object, requestOptions?: IRequestOptions, urlParams?) =>
+  (method: IHttpMethod) => (resource: string, data?: object, requestOptions?: IRequestOptions, urlParams?) =>
     apiRequestPromise(getRequestConfig(method, resource, data, requestOptions, urlParams));
 
 export interface IRequests {
@@ -118,7 +117,7 @@ export interface IRequests {
     resource: string,
     data?: object,
     requestOptions?: IRequestOptions,
-    urlParams?: IStringNumberMap | string
+    urlParams?: IStringNumberMap | string,
   ) => Promise<any>;
 }
 
@@ -127,5 +126,5 @@ export const http: IRequests = HttpMethods.reduce(
     ...result,
     [method]: createRequestPromise(method),
   }),
-  Object.create(null)
+  Object.create(null),
 );

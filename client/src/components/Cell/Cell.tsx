@@ -24,11 +24,7 @@ export const Cell: FC<IProps> = ({ player, onClick }: IProps) => {
       return <span>🐳</span>;
     default:
       return (
-        <div
-          className={onClick ? style.clickable : undefined}
-          style={{ lineHeight: '41px' }}
-          onClick={onClick}
-        >
+        <div className={onClick ? style.clickable : undefined} style={{ lineHeight: '41px' }} onClick={onClick}>
            
         </div>
       );

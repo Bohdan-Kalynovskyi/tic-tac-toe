@@ -48,7 +48,7 @@ export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
       setChosenPlayer(player);
       ws.send(JSON.stringify({ action: 'choose', data: player }));
     },
-    [ws]
+    [ws],
   );
 
   useEffect(() => {
@@ -104,16 +104,17 @@ export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
     (diff: number) => {
       ws.send(JSON.stringify({ action: 'resize', data: diff }));
     },
-    [ws]
+    [ws],
   );
 
   const onGridClick = useCallback(
     (x: number, y: number) => {
       ws.send(JSON.stringify({ action: 'step', data: { x, y, player: chosenPlayer } }));
     },
-    [ws, chosenPlayer]
+    [ws, chosenPlayer],
   );
 
+  const isWaiting = chosenPlayers.length === 1;
   const onReset = useCallback(() => {
     ws.send(JSON.stringify({ action: 'reset' }));
   }, [ws]);
@@ -143,7 +144,7 @@ export const Game: React.FC<IProps> = ({ size, ws }: IProps) => {
               {winLine ? (
                 <PlayerWon player={currentPlayer} />
               ) : (
-                <CurrentPlayer isActive={yourTurn} winSize={winSize!} player={currentPlayer} />
+                <CurrentPlayer isActive={yourTurn} isWaiting={isWaiting} winSize={winSize!} player={currentPlayer} />
               )}
             </>
           )

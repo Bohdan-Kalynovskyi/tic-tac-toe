@@ -42,18 +42,10 @@ export const ChoosePlayer: React.FC<IProps> = ({
           </Radio>
         ))}
       </Radio.Group>
-      <Button
-        className={style.less}
-        onClick={() => onChangeSize(-1)}
-        disabled={winSize === null || winSize <= 3}
-      >
+      <Button className={style.less} onClick={() => onChangeSize(-1)} disabled={winSize === null || winSize <= 3}>
         -
       </Button>
-      <Button
-        className={style.more}
-        onClick={() => onChangeSize(1)}
-        disabled={winSize === null || winSize >= 5}
-      >
+      <Button className={style.more} onClick={() => onChangeSize(1)} disabled={winSize === null || winSize >= 5}>
         +
       </Button>
       <div className={style.explain}>

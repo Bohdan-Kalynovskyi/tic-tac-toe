@@ -4,7 +4,7 @@
   background: rgba(255, 255, 255, 0.5);
   font-size: 30px;
   color: #555;
-  padding: 20px 30px;
+  padding: 20px 30px 18px 30px;
   border: 1.5px solid rgba(255, 255, 255, .6);
   width: 384px;
   margin: 0 auto;
@@ -19,6 +19,14 @@
     font-size: 80px;
     text-align: center;
     color: #000;
+  }
+
+  .wait4Others {
+    color: #fa6f00;
+    line-height: 1.35;
+    padding-bottom: 9px;
+    font-size: 35px;
+    font-weight: 600;
   }
 }
 

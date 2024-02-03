@@ -67,7 +67,7 @@ ws.on('connection', _ws => {
               JSON.stringify({
                 action: 'chosen',
                 data: { currentPlayer: currentPlayerRef.current, chosenPlayers },
-              })
+              }),
             );
           }
           break;
@@ -90,6 +90,7 @@ ws.on('connection', _ws => {
             const { x, y, player }: { x: number; y: number; player: number } = data;
             if (player !== currPlayer || player !== thisPlayer) {
               break;
+              // this happens when doubleclick
               // throw new Error('wrong player');
             }
             setNextPlayer();
@@ -97,7 +98,7 @@ ws.on('connection', _ws => {
               JSON.stringify({
                 action: 'step',
                 data: { x, y, nextPlayer: currentPlayerRef.current, playerJustPlayed: currPlayer },
-              })
+              }),
             );
           }
           break;
@@ -114,7 +115,17 @@ ws.on('connection', _ws => {
       console.error(chalk.red(err.message, err.cause));
       _ws.send(JSON.stringify({ action: 'error', data: err.message }));
     }
-
-    onShutdown(() => broadcast(JSON.stringify({ action: 'server_restart' })));
   });
+
+  ws.on('close', _ws => {
+    console.log(' - close connection');
+    const index = allConnections.indexOf(_ws);
+    if (index === -1) {
+      console.error('cannot close ws correctly');
+    } else {
+      allConnections.splice(index, 1);
+    }
+  });
+
+  onShutdown(() => broadcast(JSON.stringify({ action: 'server_restart' })));
 });
